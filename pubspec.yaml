@@ -1,7 +1,7 @@
 name: most_advance_scroll
-description: "A new Flutter project."
-version: 0.0.1
-homepage:
+description: "A package for advance scroll pagination"
+version: 1.0.0
+homepage: "https://github.com/akashefrath/most-advance_scroll"
 
 environment:
   sdk: ^3.6.0-149.3.beta
@@ -52,4 +52,3 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/to/font-from-package
-publish_to: https://onepub.dev/api/xaassdavuh/
