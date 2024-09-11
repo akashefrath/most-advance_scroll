@@ -72,12 +72,14 @@ class AdvancePagination extends StatelessWidget {
         /// only update the scroll event if scroll end notification is received
         if (notification is ScrollEndNotification) {
           /// if max pixel == current pixel its end
-          if (notification.metrics.maxScrollExtent == notification.metrics.pixels) {
+          if (notification.metrics.maxScrollExtent ==
+              notification.metrics.pixels) {
             callPageEnd();
           }
 
           /// if min pixel === current pixel its start
-          if (notification.metrics.minScrollExtent == notification.metrics.pixels) {
+          if (notification.metrics.minScrollExtent ==
+              notification.metrics.pixels) {
             callPageStart();
           }
 
