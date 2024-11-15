@@ -1,6 +1,6 @@
 name: most_advance_scroll
 description: "A package for advance scroll pagination"
-version: 1.0.3
+version: 1.0.4
 homepage: "https://github.com/akashefrath/most-advance_scroll"
 
 environment:

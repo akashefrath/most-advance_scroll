@@ -54,6 +54,8 @@ class AdvanceListViewBuilder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdvancePagination(
+      needRefreshIndicator: needRefreshIndicator,
+      onRefresh: onRefresh,
       scrollMaxOffset: scrollMaxOffset,
       scrollMinOffset: scrollMinOffset,
       onPageEnd: (bool isAdvance) {
