@@ -12,6 +12,8 @@ class AdvancePagination extends StatelessWidget {
     this.isLoading = false,
     this.controller,
     this.scrollListener,
+    this.needRefreshIndicator = false,
+    this.onRefresh,
   });
 
   /// child widget
@@ -38,10 +40,23 @@ class AdvancePagination extends StatelessWidget {
   /// custom scroll listener
   final Function(ScrollNotification notification)? scrollListener;
 
+  /// to enable refresh indicator for refresh page
+  final bool needRefreshIndicator;
+
+  /// call back for refresh
+  final Function? onRefresh;
+
   @override
   Widget build(BuildContext context) {
     return NotificationListener<ScrollNotification>(
-      child: child,
+      child: needRefreshIndicator
+          ? RefreshIndicator(
+              onRefresh: () async {
+                await onRefresh?.call();
+              },
+              child: child,
+            )
+          : child,
       onNotification: (notification) {
         /// if scroll listener is not null call it
         if (scrollListener != null) {

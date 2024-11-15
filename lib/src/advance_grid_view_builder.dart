@@ -19,6 +19,9 @@ class AdvanceGridViewBuilder extends StatelessWidget {
     this.shrinkWrap = false,
     this.scrollListener,
     this.lastItemOnVisible,
+    this.totalCount,
+    this.needRefreshIndicator = false,
+    this.onRefresh,
   });
 
   final Function(BuildContext, int) itemBuilder;
@@ -28,7 +31,7 @@ class AdvanceGridViewBuilder extends StatelessWidget {
   final double scrollMinOffset;
   final double scrollMaxOffset;
   final Function(bool isAdvance)? onPageStart;
-  final Function(bool isAdvance)? onPageEnd;
+  final Function(bool isAdvance, [bool onEndCount])? onPageEnd;
   final bool isLoading;
 
   ///
@@ -42,12 +45,26 @@ class AdvanceGridViewBuilder extends StatelessWidget {
   final Function(ScrollNotification notification)? scrollListener;
   final Function(int index)? lastItemOnVisible;
 
+  /// this will prevent pagination if list reach total count or page
+  final int? totalCount;
+
+  /// to enable refresh indicator for refresh page
+  final bool needRefreshIndicator;
+
+  /// call back for refresh
+  final Function? onRefresh;
+
   @override
   Widget build(BuildContext context) {
     return AdvancePagination(
       scrollMaxOffset: scrollMaxOffset,
       scrollMinOffset: scrollMinOffset,
-      onPageEnd: onPageEnd,
+      onPageEnd: (bool isAdvance) {
+        onPageEnd!(
+          isAdvance,
+          totalCount != null && totalCount! >= (itemCount ?? 0),
+        );
+      },
       onPageStart: onPageStart,
       isLoading: isLoading,
       controller: controller,
