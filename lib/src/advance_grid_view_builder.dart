@@ -1,4 +1,6 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'advance_pagination.dart';
 
@@ -22,6 +24,25 @@ class AdvanceGridViewBuilder extends StatelessWidget {
     this.totalCount,
     this.needRefreshIndicator = false,
     this.onRefresh,
+
+        this.padding,
+    this.reverse = false,
+    this.addAutomaticKeepAlives = true,
+    this.addRepaintBoundaries = true,
+    this.addSemanticIndexes = true,
+    this.cacheExtent,
+    this.clipBehavior = Clip.hardEdge,
+    this.dragStartBehavior = DragStartBehavior.start,
+    this.keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual,
+    this.restorationId,
+    this.semanticChildCount,
+    this.findChildIndexCallback,
+    this.hitTestBehavior = HitTestBehavior.deferToChild,
+    this.itemExtent,
+    this.itemExtentBuilder,
+    this.primary = false,
+    this.prototypeItem,
+    this.scrollDirection= Axis.vertical,
   });
 
   final Function(BuildContext, int) itemBuilder;
@@ -44,6 +65,26 @@ class AdvanceGridViewBuilder extends StatelessWidget {
   final bool shrinkWrap;
   final Function(ScrollNotification notification)? scrollListener;
   final Function(int index)? lastItemOnVisible;
+
+
+   final EdgeInsetsGeometry? padding;
+  final bool reverse;
+  final bool addAutomaticKeepAlives;
+  final bool addRepaintBoundaries;
+  final bool addSemanticIndexes;
+  final double? cacheExtent;
+  final Clip clipBehavior;
+  final DragStartBehavior dragStartBehavior;
+  final ScrollViewKeyboardDismissBehavior keyboardDismissBehavior;
+  final String? restorationId;
+  final int? semanticChildCount;
+  final int? Function(Key)? findChildIndexCallback;
+  final HitTestBehavior hitTestBehavior;
+  final double? itemExtent;
+  final ItemExtentBuilder? itemExtentBuilder;
+  final bool primary;
+  final Widget? prototypeItem;
+  final Axis scrollDirection;
 
   /// this will prevent pagination if list reach total count or page
   final int? totalCount;
@@ -72,6 +113,22 @@ class AdvanceGridViewBuilder extends StatelessWidget {
       controller: controller,
       scrollListener: scrollListener,
       child: GridView.builder(
+         key: key,
+        reverse: reverse,
+        padding: padding,
+        addAutomaticKeepAlives: addAutomaticKeepAlives,
+        addRepaintBoundaries: addRepaintBoundaries,
+        addSemanticIndexes: addSemanticIndexes,
+        cacheExtent: cacheExtent,
+        clipBehavior: clipBehavior,
+        dragStartBehavior: dragStartBehavior,
+        keyboardDismissBehavior: keyboardDismissBehavior,
+        restorationId: restorationId,
+        semanticChildCount: semanticChildCount,
+        findChildIndexCallback: findChildIndexCallback,
+        hitTestBehavior: hitTestBehavior,
+        primary: primary,
+        scrollDirection: scrollDirection,
         controller: controller,
         itemCount: itemCount,
         gridDelegate: gridDelegate,
